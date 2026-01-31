@@ -43,6 +43,6 @@ bin/
 .DS_Store
 
 src/test/resources/config/staging.properties
-**/config/*.properties
+#**/config/*.properties
 src/test/resources/data/data.xlsx
 **/data/*.xlsx
