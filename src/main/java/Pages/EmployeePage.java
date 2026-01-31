@@ -87,9 +87,6 @@ public class EmployeePage extends BasePage {
     @FindBy(xpath = "//button[@data-action='download']")
     private WebElement downloadEmployeeDataMenu;
 
-    @FindBy(xpath = "//tr[.//text()[normalize-space()='Anindya Dewi Maharani']]//a[contains(@href,'/employee/')]")
-    private WebElement detailAnindya;
-
     @FindBy (id = "add-division-confirm-button")
     private WebElement addDivisionConfirmButton;
 
