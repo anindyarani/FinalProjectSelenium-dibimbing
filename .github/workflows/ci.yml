@@ -64,7 +64,7 @@ jobs:
           echo "ChromeDriver installed at: $(which chromedriver)"
           chromedriver --version
 
-      - name: Make gradlew executable
+     - name: Make gradlew executable
         run: chmod +x ./gradlew
 
       - name: Create staging.properties file
