@@ -63,7 +63,6 @@ jobs:
           google-chrome --version
           echo "ChromeDriver installed at: $(which chromedriver)"
           chromedriver --version
-
       - name: Make gradlew executable
         run: chmod +x ./gradlew
 
@@ -71,7 +70,6 @@ jobs:
         run: |
           mkdir -p src/test/resources/config
           echo "${{ secrets.STAGING_PROPERTIES }}" > src/test/resources/config/staging.properties
-
       - name: Verify file creation (Debug)
         run: ls -R src/test/resources/config/
 
@@ -87,7 +85,6 @@ jobs:
         run: |
           echo "Test execution completed"
           ls -la build/reports/tests/test/ || echo "No test reports found"
-
       - name: Upload Test Reports
         if: always()
         uses: actions/upload-artifact@v4
