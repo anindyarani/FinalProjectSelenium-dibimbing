@@ -67,8 +67,16 @@ jobs:
       - name: Make gradlew executable
         run: chmod +x ./gradlew
 
+      - name: Create staging.properties file
+        run: |
+          mkdir -p src/test/resources/config
+          echo "${{ secrets.STAGING_PROPERTIES }}" > src/test/resources/config/staging.properties
+
+      - name: Verify file creation (Debug)
+        run: ls -R src/test/resources/config/
+
       - name: Run tests with Gradle
-        run: ./gradlew clean test -Psuite=${{ matrix.suite }} -Penv=staging --no-daemon --stacktrace
+        run: ./gradlew clean test -Psuite=${{ matrix.suite }} -Denv=staging --no-daemon --stacktrace
         env:
           GITHUB_ACTIONS: true
           CHROME_BIN: /usr/bin/google-chrome
