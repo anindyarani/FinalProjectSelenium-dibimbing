@@ -63,6 +63,7 @@ jobs:
           google-chrome --version
           echo "ChromeDriver installed at: $(which chromedriver)"
           chromedriver --version
+
       - name: Make gradlew executable
         run: chmod +x ./gradlew
 
@@ -74,8 +75,8 @@ jobs:
       - name: Verify file creation (Debug)
         run: ls -R src/test/resources/config/
 
-       - name: Run tests with Gradle
-         run: ./gradlew clean test -Psuite=${{ matrix.suite }} -Denv=staging --no-daemon --stacktrace
+      - name: Run tests with Gradle
+        run: ./gradlew clean test -Psuite=${{ matrix.suite }} -Denv=staging --no-daemon --stacktrace
         env:
           GITHUB_ACTIONS: true
           CHROME_BIN: /usr/bin/google-chrome
@@ -86,6 +87,7 @@ jobs:
         run: |
           echo "Test execution completed"
           ls -la build/reports/tests/test/ || echo "No test reports found"
+
       - name: Upload Test Reports
         if: always()
         uses: actions/upload-artifact@v4
